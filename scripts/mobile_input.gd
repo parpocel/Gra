@@ -9,6 +9,10 @@ var debug_move_touches: int = 0
 var debug_look_touches: int = 0
 var debug_last_move_touch_pos: Vector2 = Vector2.ZERO
 var debug_last_look_touch_pos: Vector2 = Vector2.ZERO
+var debug_move_drags: int = 0
+var debug_look_drags: int = 0
+var debug_max_move_offset: float = 0.0
+var debug_last_event: String = "none"
 
 
 func set_move_vector(v: Vector2) -> void:
