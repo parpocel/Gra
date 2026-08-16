@@ -14,7 +14,7 @@ var camera_pitch: float = -20.0
 
 func _ready() -> void:
 	MobileInput.interact_pressed.connect(_on_interact)
-	if not OS.has_feature("mobile"):
+	if not DisplayServer.is_touchscreen_available():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
