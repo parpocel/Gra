@@ -6,33 +6,31 @@
 
 [node name="TouchControls" type="CanvasLayer"]
 
-[node name="LookZone" type="Control" parent="."]
-anchor_right = 1.0
+[node name="MoveZone" type="Control" parent="."]
+anchor_right = 0.5
 anchor_bottom = 1.0
-script = ExtResource("2")
-
-[node name="Joystick" type="Control" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -260.0
-offset_right = 260.0
-offset_bottom = -40.0
 script = ExtResource("1")
 
-[node name="Base" type="ColorRect" parent="Joystick"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Base" type="ColorRect" parent="MoveZone"]
+visible = false
+offset_right = 140.0
+offset_bottom = 140.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.15)
 
-[node name="Knob" type="ColorRect" parent="Joystick"]
-offset_left = 75.0
-offset_top = 75.0
-offset_right = 145.0
-offset_bottom = 145.0
+[node name="Knob" type="ColorRect" parent="MoveZone/Base"]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 100.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.4)
+
+[node name="LookZone" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2")
 
 [node name="InteractButton" type="Button" parent="."]
 anchor_left = 1.0
