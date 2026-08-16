@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/touch_joystick.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/look_zone.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/interact_button.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/debug_hud.gd" id="4"]
 
 [node name="TouchControls" type="CanvasLayer"]
 
@@ -31,6 +32,20 @@ anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("2")
+
+[node name="DebugHud" type="Label" parent="."]
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 22
+text = "debug hud"
+autowrap_mode = 2
+script = ExtResource("4")
 
 [node name="InteractButton" type="Button" parent="."]
 anchor_left = 1.0

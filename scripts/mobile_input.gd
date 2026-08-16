@@ -5,6 +5,11 @@ signal interact_pressed
 var move_vector: Vector2 = Vector2.ZERO
 var _look_delta: Vector2 = Vector2.ZERO
 
+var debug_move_touches: int = 0
+var debug_look_touches: int = 0
+var debug_last_move_touch_pos: Vector2 = Vector2.ZERO
+var debug_last_look_touch_pos: Vector2 = Vector2.ZERO
+
 
 func set_move_vector(v: Vector2) -> void:
 	move_vector = v

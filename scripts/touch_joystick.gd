@@ -17,6 +17,8 @@ func _gui_input(event: InputEvent) -> void:
 			base.position = _center - base.size / 2.0
 			knob.position = base.size / 2.0 - knob.size / 2.0
 			base.visible = true
+			MobileInput.debug_move_touches += 1
+			MobileInput.debug_last_move_touch_pos = event.position
 		elif not event.pressed and event.index == _touch_index:
 			_touch_index = -1
 			base.visible = false
