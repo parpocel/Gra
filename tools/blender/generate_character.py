@@ -8,6 +8,7 @@ argv = sys.argv
 argv = argv[argv.index("--") + 1:] if "--" in argv else []
 seed = int(argv[0]) if len(argv) > 0 else random.randint(0, 999999)
 out_path = argv[1] if len(argv) > 1 else "/tmp/character.glb"
+preset = argv[2] if len(argv) > 2 else None
 
 random.seed(seed)
 
@@ -132,6 +133,7 @@ shirt_color = random_color(s=0.5, v=0.9)
 pants_color = random_color(s=0.35, v=0.55)
 shoe_color = random.choice(shoe_tones)
 cap_color = random_color(s=0.55, v=0.85)
+cap_logo_color = random_color(s=0.7, v=0.9)
 hair_color = random.choice(hair_tones)
 backpack_color = random_color(s=0.5, v=0.7)
 book_color = random.choice(book_tones)
@@ -140,6 +142,22 @@ has_cap = random.random() < 0.7
 has_beard = random.random() < 0.6
 has_backpack = random.random() < 0.5
 has_book = random.random() < 0.4
+
+if preset == "piotr":
+	skin = (0.80, 0.62, 0.47)
+	jacket_color = (0.10, 0.10, 0.11)
+	shirt_color = (0.92, 0.92, 0.90)
+	pants_color = (0.22, 0.22, 0.24)
+	shoe_color = (0.10, 0.09, 0.09)
+	cap_color = (0.07, 0.07, 0.08)
+	cap_logo_color = (0.65, 0.1, 0.1)
+	hair_color = (0.16, 0.1, 0.07)
+	backpack_color = (0.15, 0.15, 0.16)
+	book_color = (0.5, 0.08, 0.08)
+	has_cap = True
+	has_beard = True
+	has_backpack = False
+	has_book = False
 
 # --- proportions (feet at z=0) ---
 foot_h = 0.12
@@ -235,6 +253,11 @@ if has_cap:
 		"CapBrim", (head_s * 0.5, head_s * 0.35, head_s * 0.08),
 		(0.0, -head_s * 0.6, z_shoulder + head_s * 0.8), (0.0, -head_s * 0.6, z_shoulder + head_s * 0.8),
 		cap_color, parent=head,
+	)
+	add_part(
+		"CapLogo", (head_s * 0.22, 0.02, head_s * 0.18),
+		(0.0, -head_s * 0.51, z_shoulder + head_s * 0.95), (0.0, -head_s * 0.51, z_shoulder + head_s * 0.95),
+		cap_logo_color, parent=head,
 	)
 else:
 	add_part(
