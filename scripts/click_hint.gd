@@ -1,10 +1,16 @@
 extends Label
 
+const AUTO_HIDE_AFTER := 6.0
 
-func _ready() -> void:
-	visible = not DisplayServer.is_touchscreen_available()
+var _age := 0.0
 
 
-func _process(_delta: float) -> void:
-	if visible and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+func _process(delta: float) -> void:
+	if not visible:
+		return
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		visible = false
+		return
+	_age += delta
+	if _age > AUTO_HIDE_AFTER:
 		visible = false

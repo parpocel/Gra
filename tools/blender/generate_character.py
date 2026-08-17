@@ -44,7 +44,7 @@ def add_part(name, size, center_pos, pivot_pos, color, parent=None):
 	bevel_width = min(bevel_width, min_dim * 0.45)
 	mod = obj.modifiers.new(name="Bevel", type="BEVEL")
 	mod.width = bevel_width
-	mod.segments = 2
+	mod.segments = 4
 	mod.limit_method = "ANGLE"
 	mod.angle_limit = math.radians(35)
 	bpy.ops.object.modifier_apply(modifier=mod.name)
