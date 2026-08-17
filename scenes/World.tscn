@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://ui/TouchControls.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/props/TreeProp.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/props/RockProp.tscn" id="4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.38, 0.6, 0.85, 1)
@@ -48,5 +50,23 @@ shape = SubResource("BoxShape3D_ground")
 
 [node name="Player" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Tree1" parent="." instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+
+[node name="Tree2" parent="." instance=ExtResource("3")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 6, 0, -8)
+
+[node name="Tree3" parent="." instance=ExtResource("3")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -9, 0, 4)
+
+[node name="Tree4" parent="." instance=ExtResource("3")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 8, 0, 6)
+
+[node name="Tree5" parent="." instance=ExtResource("3")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -3, 0, 9)
+
+[node name="Rock1" parent="." instance=ExtResource("4")]
+transform = Transform3D(1.126, 0, -0.65, 0, 1.3, 0, 0.65, 0, 1.126, 4, 0, -3)
 
 [node name="UI" parent="." instance=ExtResource("2")]

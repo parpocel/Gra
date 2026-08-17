@@ -37,6 +37,17 @@ def add_part(name, size, center_pos, pivot_pos, color, parent=None):
 	bpy.context.view_layer.objects.active = obj
 	obj.select_set(True)
 	bpy.ops.object.origin_set(type="ORIGIN_CURSOR")
+
+	min_dim = min(size)
+	bevel_width = min(0.022, max(0.006, min_dim * 0.16))
+	bevel_width = min(bevel_width, min_dim * 0.45)
+	mod = obj.modifiers.new(name="Bevel", type="BEVEL")
+	mod.width = bevel_width
+	mod.segments = 2
+	mod.limit_method = "ANGLE"
+	mod.angle_limit = math.radians(35)
+	bpy.ops.object.modifier_apply(modifier=mod.name)
+
 	bpy.ops.object.shade_flat()
 	bpy.context.view_layer.update()
 
