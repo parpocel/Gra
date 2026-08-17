@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/touch_input.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/interact_button.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/debug_hud.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/click_hint.gd" id="4"]
 
 [node name="TouchControls" type="CanvasLayer"]
 
@@ -39,6 +40,25 @@ theme_override_font_sizes/font_size = 18
 text = "debug hud"
 autowrap_mode = 2
 script = ExtResource("3")
+
+[node name="ClickHint" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -40.0
+offset_right = 220.0
+offset_bottom = -12.0
+mouse_filter = 2
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 20
+text = "Kliknij, aby rozejrzeć się myszką (Esc, aby zwolnić kursor)"
+script = ExtResource("4")
 
 [node name="InteractButton" type="Button" parent="."]
 anchor_left = 1.0

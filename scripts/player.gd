@@ -6,8 +6,7 @@ const RUN_INTENSITY_THRESHOLD := 0.6
 const IDLE_INTENSITY_THRESHOLD := 0.05
 const GRAVITY := 9.8
 const ROTATION_SPEED := 10.0
-const LOOK_SENSITIVITY := 0.3
-const MOUSE_SENSITIVITY := 0.15
+const LOOK_SENSITIVITY := 0.2
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var model_root: Node3D = $ModelRoot
@@ -21,8 +20,6 @@ var _anim_state: String = ""
 
 func _ready() -> void:
 	MobileInput.interact_pressed.connect(_on_interact)
-	if not DisplayServer.is_touchscreen_available():
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_anim_player = model_root.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	if _anim_player != null:
 		for anim_name in ["Idle", "Walk", "Run"]:
@@ -86,9 +83,7 @@ func _update_animation(intensity: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		_apply_look(event.relative * MOUSE_SENSITIVITY)
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 

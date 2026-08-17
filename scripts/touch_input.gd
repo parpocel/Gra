@@ -16,6 +16,11 @@ func _gui_input(event: InputEvent) -> void:
 			_on_touch_end(event.index)
 	elif event is InputEventScreenDrag:
 		_on_touch_drag(event.index, event.position)
+	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		MobileInput.add_look_delta(event.relative)
+	elif event is InputEventMouseButton and event.pressed:
+		if not DisplayServer.is_touchscreen_available() and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_touch_start(index: int, pos: Vector2) -> void:
